@@ -1,6 +1,5 @@
 use crate::cache::types::cache_tradable_item::CacheTradableItem;
 use crate::cache::types::item_price_info::ItemPriceInfo;
-use crate::commands::log;
 use crate::enums::trade_mode::TradeMode;
 use crate::live_scraper::client::LiveScraperClient;
 
@@ -11,7 +10,6 @@ use crate::utils::enums::ui_events::{UIEvent, UIOperationEvent};
 use crate::utils::modules::error::{self, AppError};
 use crate::utils::modules::logger;
 use crate::wfm_client::enums::order_type::OrderType;
-use crate::wfm_client::types::item;
 use crate::wfm_client::types::order::Order;
 use crate::wfm_client::types::orders::Orders;
 use entity::enums::stock_status::StockStatus;

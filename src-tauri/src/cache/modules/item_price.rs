@@ -1,11 +1,8 @@
 use std::{
-    fs::File,
-    io::{Read, Write},
-    ops::Sub,
     path::PathBuf,
 };
 
-use entity::sub_type::{self, SubType};
+use entity::sub_type::SubType;
 use eyre::eyre;
 
 use crate::{

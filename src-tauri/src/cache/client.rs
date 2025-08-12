@@ -21,7 +21,6 @@ use super::modules::{
 #[derive(Clone, Debug)]
 pub struct CacheClient {
     pub qf: Arc<Mutex<crate::qf_client::client::QFClient>>,
-    pub settings: Arc<Mutex<SettingsState>>,
     item_price_module: Arc<RwLock<Option<ItemPriceModule>>>,
     relics_module: Arc<RwLock<Option<RelicsModule>>>,
     riven_module: Arc<RwLock<Option<RivenModule>>>,
@@ -50,11 +49,10 @@ pub struct CacheClient {
 impl CacheClient {
     pub fn new(
         qf: Arc<Mutex<crate::qf_client::client::QFClient>>,
-        settings: Arc<Mutex<SettingsState>>,
+        _settings: Arc<Mutex<SettingsState>>,
     ) -> Self {
         CacheClient {
             qf,
-            settings,
             component: "Cache".to_string(),
             md5_file: "cache_id.txt".to_string(),
             item_price_module: Arc::new(RwLock::new(None)),

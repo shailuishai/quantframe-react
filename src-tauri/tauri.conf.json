@@ -60,7 +60,7 @@
       "active": true,
       "endpoints": ["https://api.quantframe.app/release/{{target}}/{{arch}}/{{current_version}}"],
       "dialog": false,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEQ3NEIwMTI1MzA3Q0E1OEYKUldTUHBYd3dKUUZMMTczQ2pIYTR0bklLQXlaMkxvK0V0a0RMQytNMTdqZzBCWitQRnNIWDhxYnAK"
+      "pubkey": "untrusted comment: minisign public key: D74B0125307CA58F\nRWSxPxwwJQFL173CjHa4tnIKAyZL2o+EtkDLK+M17jg0BZ+PFnsHX8qbp"
     },
     "bundle": {
       "active": true,

@@ -2,16 +2,14 @@ use std::sync::{Arc, Mutex};
 
 use create::CreateWishListItem;
 use entity::wish_list::*;
-use entity::{enums::stock_status::StockStatus, sub_type::SubType};
+use entity::sub_type::SubType;
 
 use eyre::eyre;
-use migration::Iden;
 use serde_json::json;
-use service::{StockRivenMutation, StockRivenQuery, WishListMutation, WishListQuery};
+use service::{WishListMutation, WishListQuery};
 
 use crate::cache::client::CacheClient;
 use crate::helper::{self, add_metric};
-use crate::live_scraper::modules::item;
 use crate::qf_client::client::QFClient;
 use crate::utils::modules::error;
 use crate::wfm_client::enums::order_type::OrderType;
@@ -20,7 +18,7 @@ use crate::{
     notification::client::NotifyClient,
     utils::{
         enums::ui_events::{UIEvent, UIOperationEvent},
-        modules::{error::AppError, logger},
+        modules::error::AppError,
     },
     wfm_client::client::WFMClient,
 };
