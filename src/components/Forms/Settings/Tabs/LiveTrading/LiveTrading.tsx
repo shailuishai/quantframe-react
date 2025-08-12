@@ -210,6 +210,15 @@ export const LiveTradingPanel = ({ onSubmit, value }: LiveTradingPanelProps) => 
                         rightSection={<TooltipIcon label={useTranslateFormFields("buy_quantity.tooltip")} />}
                         radius="md"
                       />
+                      <NumberInput
+                        label={useTranslateFormFields("buy_margin.label")}
+                        placeholder={useTranslateFormFields("buy_margin.placeholder")}
+                        value={(form.values as any).stock_item.buy_margin}
+                        onChange={(event) => form.setFieldValue("stock_item.buy_margin", Number(event))}
+                        error={(form as any).errors.buy_margin && useTranslateFormFields("buy_margin.error")}
+                        rightSection={<TooltipIcon label={useTranslateFormFields("buy_margin.tooltip")} />}
+                        radius="md"
+                      />
                     </Group>
                   </Accordion.Panel>
                 </Accordion.Item>

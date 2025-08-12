@@ -32,6 +32,7 @@ export interface SettingsStockItem {
   range_threshold: number;
   report_to_wfm: boolean;
   volume_threshold: number;
+  buy_margin: number;
 }
 
 export interface SettingsStockRiven {

@@ -70,6 +70,7 @@ pub struct StockItemSettings {
     pub min_profit: i64,
     pub auto_delete: bool,
     pub buy_quantity: i64,
+    pub buy_margin: i64,
 }
 #[derive(Clone, Debug, Serialize, Deserialize)]
 pub struct AnalyticsSettings {
@@ -152,6 +153,7 @@ impl Default for SettingsState {
                     report_to_wfm: true,
                     auto_trade: true,
                     auto_delete: true,
+                    buy_margin: 0,
                 },
                 stock_riven: StockRivenSettings {
                     min_profit: 25,

@@ -637,6 +637,14 @@ impl ItemModule {
         // Set the post price to the highest price.
         let mut post_price = highest_price;
 
+        // Apply absolute buy margin if configured (> 0): price = floor(closed_avg) - margin
+        let closed_avg = price.moving_avg.unwrap_or(0.0);
+        let buy_margin = settings.stock_item.buy_margin;
+        if buy_margin > 0 {
+            let target = (closed_avg.floor() as i64).saturating_sub(buy_margin);
+            post_price = std::cmp::max(1, target);
+        }
+
         // Get Maximum Price
         let maximum_price = wish_list_item.maximum_price.unwrap_or(0);
 
@@ -850,8 +858,13 @@ impl ItemModule {
         // Set the post price to the highest price.
         let mut post_price = highest_price;
 
-        // If there are no buyers, and the average price is greater than 25p, then we should probably update/create our listing.
-        if post_price == 0 && closed_avg > 25.0 {
+        // If absolute buy margin is configured (> 0), override by closed_avg - margin
+        let buy_margin = settings.stock_item.buy_margin;
+        if buy_margin > 0 {
+            let target = (closed_avg.floor() as i64).saturating_sub(buy_margin);
+            post_price = std::cmp::max(1, target);
+        } else if post_price == 0 && closed_avg > 25.0 {
+            // If there are no buyers, and the average price is greater than 25p, then we should probably update/create our listing.
             // Calculate the post price
             // The post price is the maximum of two calculated values:
             // 1. The price range minus 40
