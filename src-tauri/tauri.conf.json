@@ -57,10 +57,10 @@
       }
     },
     "updater": {
-      "active": true,
+      "active": false,
       "endpoints": ["https://api.quantframe.app/release/{{target}}/{{arch}}/{{current_version}}"],
       "dialog": false,
-      "pubkey": "untrusted comment: minisign public key: D74B0125307CA58F\nRWSxPxwwJQFL173CjHa4tnIKAyZL2o+EtkDLK+M17jg0BZ+PFnsHX8qbp"
+      "pubkey": "untrusted comment: minisign public key: RWRTY0IyzHBBoGKbGFvUx1/eIsX3r/3BgibHig3CvAGE26IVePsAAAACAAAAAAAAAEAAAAAABTIgIoGcOR+H3mR6L9osIhynyOhaNBgDMuD40NaW5FzaMl3WtK+pV3IpmOfcHmn6Un0ztMO6TA8uJ+AN2aSf5kbLUjKgufS9UGhEWxO6cNOWiKnghD2Z5GOFM5YXE34udRkAaWHF/OU="
     },
     "bundle": {
       "active": true,
