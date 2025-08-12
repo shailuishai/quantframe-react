@@ -1,5 +1,10 @@
 export const ru = {
     months: ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"],
+    languages: {
+        en: "Английский",
+        ru: "Русский",
+        dk: "Датский",
+    },
     notifications: {
       add_riven: {
         success: {
@@ -92,6 +97,9 @@ export const ru = {
       },
     },
     components: {
+      language_switcher: {
+        title: "Выберите язык",
+      },
       modals: {
         base: {
           buttons: {

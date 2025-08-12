@@ -3,6 +3,7 @@ import { ModalsProvider } from '@mantine/modals';
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import { en } from './lang/en'
+import { ru } from './lang/ru'
 import { dk } from './lang/dk'
 
 import { IconDefinition, library, dom, IconPrefix, IconName } from '@fortawesome/fontawesome-svg-core'
@@ -45,6 +46,7 @@ i18n
   .init({
     resources: {
       en: { translation: en },
+      ru: { translation: ru },
       dk: { translation: dk },
     },
     lng: "en",
@@ -62,6 +64,13 @@ const queryClient = new QueryClient({
 })
 
 function App() {
+  useEffect(() => {
+    // Set language from localStorage on app load
+    const savedLanguage = localStorage.getItem('app-language');
+    if (savedLanguage && ['en', 'ru', 'dk'].includes(savedLanguage)) {
+      i18n.changeLanguage(savedLanguage);
+    }
+  }, []);
 
   useEffect(() => {
     window.onclick = async () => {

@@ -1,5 +1,10 @@
 export const en = {
   months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+  languages: {
+    en: "English",
+    ru: "Russian",
+    dk: "Danish",
+  },
   notifications: {
     add_riven: {
       success: {
@@ -92,6 +97,9 @@ export const en = {
     },
   },
   components: {
+    language_switcher: {
+      title: "Select Language",
+    },
     modals: {
       base: {
         buttons: {

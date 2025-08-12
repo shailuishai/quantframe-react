@@ -2,6 +2,7 @@ import { Group, useMantineTheme } from "@mantine/core";
 import classes from "./Header.module.css";
 import { Logo } from "@components/Logo";
 import { Clock } from "@components/Clock";
+import { LanguageSwitcher } from "@components/LanguageSwitcher";
 import { UserMenu } from "@components/UserMenu";
 
 export type HeaderProps = {};
@@ -12,7 +13,10 @@ export function Header({}: HeaderProps) {
     <Group ml={"sm"} mr={"sm"} justify="space-between" className={classes.header}>
       <Logo color={theme.colors.blue[7]} />
       <Clock />
-      <UserMenu />
+      <Group gap="xs">
+        <LanguageSwitcher />
+        <UserMenu />
+      </Group>
     </Group>
   );
 }
