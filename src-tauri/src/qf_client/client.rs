@@ -65,7 +65,8 @@ impl QFClient {
     ) -> Self {
         QFClient {
             endpoint: "https://api.quantframe.app/".to_string(),
-            endpoint_dev: "http://localhost:6969/".to_string(),
+            endpoint_dev: std::env::var("QF_API_URL")
+                .unwrap_or_else(|_| "https://api.quantframe.app/".to_string()),
             is_dev: if cfg!(debug_assertions) { true } else { false },
             limiter: Arc::new(tokio::sync::Mutex::new(RateLimiter::new(
                 3.0,

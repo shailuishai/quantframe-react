@@ -72,7 +72,12 @@ pub async fn auth_login(
     let arced_mutex = Arc::clone(&auth);
     let mut auth = arced_mutex.lock().expect("Could not lock auth");
     auth.update_from_wfm_user_profile(&wfm_user, wfm_token.clone());
-    auth.update_from_qf_user_profile(&qf_user.unwrap(), qf_token);
+    
+    // Проверяем, что qf_user не None перед unwrap
+    if let Some(qf_user) = &qf_user {
+        auth.update_from_qf_user_profile(qf_user, qf_token);
+    }
+    
     auth.save_to_file()?;
     Ok(auth.clone())
 }

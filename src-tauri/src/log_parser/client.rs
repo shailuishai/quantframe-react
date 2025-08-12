@@ -94,18 +94,8 @@ impl LogParser {
                 match scraper.check_for_new_logs(self.cold_start.load(Ordering::SeqCst)) {
                     Ok(_) => (),
                     Err(e) => {
-                        if e.cause().to_string().contains("Log file does not exist") {
-                            logger::warning_con(
-                                &scraper.component,
-                                &format!("{} wil try again in 10 seconds", e.cause()),
-                            );
-                            // Wait 10 seconds before trying again
-                            tokio::time::sleep(Duration::from_secs(10)).await;
-                            logger::info_con(
-                                &scraper.component,
-                                "Trying to start the log parser again",
-                            );
-                        } else {
+                        // Логируем только реальные ошибки, не связанные с отсутствием файла
+                        if !e.cause().to_string().contains("Log file does not exist") {
                             error::create_log_file("log_parser.logs".to_string(), &e);
                         }
                     }
@@ -119,10 +109,9 @@ impl LogParser {
     }
     pub fn check_for_new_logs(&self, is_starting: bool) -> Result<(), AppError> {
         if !self.log_file.exists() {
-            return Err(AppError::new(
-                &self.component,
-                eyre::eyre!("Log file does not exist: {:?}", self.log_file),
-            ));
+            // Если файл не существует, это не критично - просто возвращаем Ok
+            // Файл может появиться позже, когда пользователь запустит Warframe
+            return Ok(());
         }
 
         let mut file = File::open(&self.log_file).map_err(|e| {
